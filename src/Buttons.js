@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Firebase from './Firebase.js';
+import { Button } from 'reactstrap';
 
-class Button extends Component {
+class Buttons extends Component {
     constructor(props) {
         super(props);
-    
-        // This binding is necessary to make `this` work in the callback
         this.sendData = this.sendData.bind(this);
         console.log(this.props.generateColor);
     }
@@ -13,8 +12,6 @@ class Button extends Component {
     
     sendData = () => {
         let colorDatabase = Firebase.database().ref('colors2');
-        console.log(this.props)
-    
         var data = {
             r: `${this.props.r}`,
             g: `${this.props.g}`,
@@ -28,7 +25,6 @@ class Button extends Component {
         
         let that = this
         function finished(err) {
-            
             if (err) {
                 console.log("ooops, something went wrong");
                 console.log("err");
@@ -40,8 +36,13 @@ class Button extends Component {
         console.log('onclick')
     }
     render() {
-        return (<button onClick={this.sendData}>{this.props.button}</button>)
+        return (
+            <React.Fragment>
+                <Button onClick={this.sendData}>{this.props.button}</Button>{' '}
+            </React.Fragment>
+            
+        )
     }
 }
 
-export default Button;
+export default Buttons;

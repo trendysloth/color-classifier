@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Firebase from './Firebase.js';
 import p5 from 'p5';
+import Train from './Train.js';
 import { exists } from 'fs';
 
 class Displaycanvas extends Component {
   constructor(props) {
     super(props);
-    this.rect_x = 40;
-    this.width = this.rect_x * 80;
+    this.rect_x = window.innerWidth / 60;
+    this.width = window.innerWidth;
     this.colorByLabel = {
       'blue-ish': [],
       'green-ish': [],
@@ -72,10 +73,11 @@ class Displaycanvas extends Component {
 
   sketch = (p) => {
     p.setup = function() {
-      p.createCanvas(this.width * 20, this.width * 20);
+      p.createCanvas(window.innerWidth * 0.9, window.innerWidth * 0.9);
     };
 
     let colorDatabase = Firebase.database().ref('colors2');
+    console.log(colorDatabase)
     colorDatabase.once('value', this.gotData);
   };
 
@@ -139,14 +141,21 @@ class Displaycanvas extends Component {
     for (let i = 0; i < this.x_pos.length; i ++) {
       this.displayColor(this.color_labels[i], this.x_pos[i], this.y_pos[i])
     }
+    console.log(this.allData)
   }
+
+  
+
+
   render() {
     return (
       <React.Fragment>
+        {/* <div>
+          <Train allData={this.allData} labelList={this.labelList}/>
+        </div> */}
         <div ref="wrapper2">
         </div>
       </React.Fragment>
-      
     )
   } 
 }

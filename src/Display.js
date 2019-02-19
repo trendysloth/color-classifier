@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import Firebase from './Firebase.js';
 
-// import { floor, random, background } from 'p5';
-// var app = firebase.initializeApp({ ... });
 
 const rect_x = 50;
 const width = rect_x * 30;
@@ -45,6 +43,12 @@ function gotData(results) {
         x_pos.push(rect_x)
         y_pos.push(y_init)
     }
+    console.log(allData)
+}
+
+function downloadData() {
+    saveJSON(allData, 'colorData.json');
+    console.log("downloading")
 }
 
 
