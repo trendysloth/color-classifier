@@ -185,6 +185,10 @@ class Train extends Component {
             const xs = tf.tensor2d([
                 [r / 255, g / 255, b / 255]
             ]);
+            if (!model) {
+                alert('train model first')
+                return
+            }
             let results = model.predict(xs);
             let index = results.argMax(1).dataSync()[0];
             // console.log(index);
@@ -295,20 +299,42 @@ class Train extends Component {
             // </Container>
             <React.Fragment>
                 {/* <Col xs="3"></Col> */}
-                <Col>
-                    <Form inline onSubmit={this.handleSubmit}>
-                        <FormGroup>
-                            <Input onChange={this.handleChange} placeholder="Number of Epoches" />
-                        </FormGroup>
-                        {'   '}
-                        <Button color="primary">Start training</Button>
-                        <Button onClick={this.downloadData}>Download Data</Button>
-                    </Form>
-                    
-                    <p>epoch: {this.state.numEpoch + 1}  loss: {this.state.loss}</p>
 
-                    <div className="App">
-                        <XYPlot height={300} width={window.innerWidth * 0.4}>
+                <Col xs="12">
+                    <Form inline onSubmit={this.handleSubmit}>
+                        <Col xs="6">
+
+                            <FormGroup>
+                                
+                                <Input onChange={this.handleChange} placeholder="Number of Epoches"/>{'   '}
+                                epoch: {this.state.numEpoch + 1}  loss: {this.state.loss}
+                            </FormGroup>
+                        </Col>
+                        <Col xs="6">
+                            <Button color="primary">Start training</Button>{'   '}
+                            <Button onClick={this.downloadData}>Download Data</Button>
+                            
+
+                        </Col>
+                    
+
+                    </Form>
+                
+                
+                    
+                </Col>
+
+
+                
+                    
+                {/* <p></p> */}
+                    
+                <Col xs="12">
+                    
+                    <div className="App canvas">
+                        
+                        <XYPlot height={300} width={window.innerWidth * 0.8}>
+                            
                             <VerticalGridLines />
                             <HorizontalGridLines />
                             <XAxis />
@@ -317,16 +343,22 @@ class Train extends Component {
                         </XYPlot>
                     </div>
                     <div id="wrapper3"/>
-                </Col>
-                <Col xs="6">
                     
-                    <Button color="primary" onClick={this.generateColor}>generate color</Button>{'   '}
-                    <Button color="primary" onClick={this.predict}>predict</Button>
                 </Col>
+                    
+
                 <Col xs="6">
+
                     <div ref="wrapper5"/>
                     <p>{this.state.prediction}</p>
                 </Col>
+                <Col xs="6">
+                    <Button color="primary" onClick={this.generateColor}>generate color</Button>{'   '}
+                    <Button color="primary" onClick={this.predict}>predict</Button>
+                </Col>
+
+                
+                
                     
                     
 

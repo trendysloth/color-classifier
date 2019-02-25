@@ -11,7 +11,6 @@ class RouterIndex extends Component {
              <BrowserRouter>
                 <Switch>
                     <Route path="/model" component={Test} exact/>
-                    
                     <Route path="/" component={Datacollection} exact/>
                     <Route path="/visualization" component={Visualization} exact/>
                 </Switch>

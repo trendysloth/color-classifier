@@ -5,6 +5,8 @@
   "dependencies": {
     "@tensorflow/tfjs": "^0.15.1",
     "bootstrap": "^4.3.1",
+    "chroma-js": "^2.0.3",
+    "d3": "^5.9.1",
     "firebase": "^5.8.2",
     "heroku": "^7.21.0",
     "p5": "^0.7.3",

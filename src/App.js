@@ -40,22 +40,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('color state ' + this.state.colors)
-    // this.generateColor();
     return (
-      // <div>
-      //   <h1>Color Perception</h1>
-      //   <div className="row">
-      //     <div className="col-lg-6">
-      //       <Newcanvas colors={this.state.colors}/>
-      //       <Canvas generateColor={this.generateColor} colors={this.state.colors}/>
-      //       <Displaycanvas colors={this.state.colors}/>
-      //     </div>
-      //     <div className="col-lg-6">
-      //     </div>
-      //   </div>
-
-      // </div>
       <RouterIndex/>
     );
   }

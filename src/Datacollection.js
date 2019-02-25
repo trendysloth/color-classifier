@@ -46,11 +46,8 @@ class Datacollection extends Component {
         <Nav/>
        
         <Container>
-          Color Perception
           <Row>
-
             <Col>
-              
               <Newcanvas colors={this.state.colors}/>
               <Canvas generateColor={this.generateColor} colors={this.state.colors}/>
               <Displaycanvas colors={this.state.colors}/>
