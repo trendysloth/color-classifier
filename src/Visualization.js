@@ -299,12 +299,12 @@ class Visualization extends Component {
 
 
   render() {
-    // let element = document.getElementsByTagName("canvas")
-    // if (element.length !== 0){
-    //   for (let index = 0; index < element.length; index++) {
-    //     element[index].parentNode.removeChild(element[index]);
-    //   }
-    // }
+    let element = document.getElementsByTagName("canvas")
+    if (element.length !== 0){
+      for (let index = 0; index < element.length; index++) {
+        element[index].parentNode.removeChild(element[index]);
+      }
+    }
     
     // console.log(avgBlue[0] / blueData.length, avgBlue[1] / blueData.length, avgBlue[2] / blueData.length)
 
