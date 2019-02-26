@@ -3,10 +3,6 @@ import Firebase from './Firebase.js';
 import Nav from './Nav.js';
 import * as d3 from 'd3';
 import Displaycanvas2 from './Displaycanvas2.js';
-import { UncontrolledTooltip } from 'reactstrap';
-import { XYPlot, XAxis, YAxis, VerticalGridLines, HorizontalGridLines, VerticalBarSeries } from 'react-vis';
-
-import { Button } from 'reactstrap';
 
 const blueData = [];
 const greenData = [];
@@ -75,20 +71,15 @@ class Visualization extends Component {
     this.state = {
       loaded: false,
       selectedColor: '', 
-      loaded2: false
-      
+      loaded2: false     
     }
-    // this.selectedColor = '';
   }
 
 
   onClick(color) {
-    // console.log(element)
     this.setState({
       selectedColor: color
     }, console.log(color))
-    // this.selectedColor = color;
-    // console.log(this.selectedColor);
   }
   componentDidMount() {
     let that = this
@@ -103,16 +94,8 @@ class Visualization extends Component {
   }
 
   get xAxis(){
-    console.log('drawing xaxis...', this.x, this.y)
-
-    // let x2 = d3.scaleBand().range([0, 400]).domain(['red']);
-    // let x2.domain(this.variables);
-
+    // console.log('drawing xaxis...', this.x, this.y)
     return d3.axisBottom(this.x).ticks(9);
-
-
-    // console.log(x2)
-    // return d3.axisBottom(x2).ticks(9);
   }
 
   get yAxis(){
@@ -122,8 +105,6 @@ class Visualization extends Component {
              .tickFormat(function(d) {
                 return format(d)
              });
-
-    // return d3.axisLeft(this.y);
   }
 
   drawXAxis = (e) =>{
@@ -131,25 +112,14 @@ class Visualization extends Component {
     d3.select(this.refs.xaxis).call(this.xAxis);
   }
 
-
   drawYAxis(){
     d3.select(this.refs.yaxis).call(this.yAxis);
   }
-
-  // get line(){
-  //   return d3.line().x((d)=> (this.x(d.x)))
-  //                   .y((d)=> (this.y(d.y)));
-  //                   // .height((d) => (this.y(d.y)))
-  //                   // .width((d) => this.x.bandwidth())
-  // }
 
   formatData(data) {
     this.x.domain(this.variables);
     this.y.domain(d3.extent(data, (d) => d.y));
     this.y.domain([0, d3.max(data, function(d) { return d.y; })]);
-
-    // console.log(this.x.domain(), data)
-
     avgRGBs = [avgBlue, avgGreen, avgPink, avgGrey, avgRed, avgPurple, avgBrown, avgOrange, avgYellow]
     datalength = [blueData, greenData, pinkData, greyData, redData, purpleData, brownData, orangeData, yellowData]
     // let fillColors = []
@@ -166,11 +136,7 @@ class Visualization extends Component {
 
   path(data){
     this.formatData(data);
-    console.log(parseInt(avgRed[0] / redData.length), avgBlue, avgYellow)
-    
-    // return (
-    //   <path d={this.line(data)} style={{"stroke": "#1f78b4", "stroke-width": "5px"}}/>
-    // );
+    // console.log(parseInt(avgRed[0] / redData.length), avgBlue, avgYellow)
     let bars = []
     let that = this
     data.forEach((element, i) => {
@@ -187,16 +153,6 @@ class Visualization extends Component {
                                      fillColors[i][2] + ")"}}
             onClick={() => that.onClick(that.variables2[i])}
           />
-          {/* <text x={that.x(element.x)} y={that.y(-15)}>
-            {element.x}
-          </text> */}
-          {/* <text x={that.x(element.x)} y={that.y(element.y)} font={"1.0em"}>
-            {element.y}
-          </text> */}
-          {/* <UncontrolledTooltip placement="top" target={"rect-id-" + i}> */}
-            {/* x: {this.variables[0]} <br/> y: {contribution_breakdown_list[0].toFixed(2)} */}
-            {/* haha */}
-          {/* </UncontrolledTooltip> */}
         </React.Fragment>
       )
     })
@@ -204,27 +160,14 @@ class Visualization extends Component {
   }
 
   gotData2 = (results) => {
-    
     let data = results.val();
     let keys = Object.keys(data);
-    
-    // keys = keys.slice(Math.random(0, 300), 100 + Math.random(0, 300));
-    // console.log(keys[0])
-    // let counter = 0;
     for (let key of keys) {
-      // if (counter < 100) {
-        
-      //   // counter = counter + 1
-      // }
       let record = data[key];
-      // console.log(record)
       this.colorByLabel[record.label].push(record);
-
-
       switch(record.label) {
         case 'blue-ish':
           blueData.push(record)
-          // console.log(record.r, record.g, record.b)
           avgBlue[0] = avgBlue[0] + parseInt(record.r)
           avgBlue[1] = avgBlue[1] + parseInt(record.g)
           avgBlue[2] = avgBlue[2] + parseInt(record.b)
@@ -286,15 +229,15 @@ class Visualization extends Component {
           avgYellow[1] = avgYellow[1] + parseInt(record.g)
           avgYellow[2] = avgYellow[2] + parseInt(record.b)
           break;
-
       }
       this.allData.entries.push(record);
       
     }
-    // console.log(avgBlue[0], blueData.length)
     this.setState({
       loaded: true
     })
+    this.drawXAxis();
+    this.drawYAxis();
   }
 
 
@@ -305,39 +248,10 @@ class Visualization extends Component {
         element[index].parentNode.removeChild(element[index]);
       }
     }
-    
-    // console.log(avgBlue[0] / blueData.length, avgBlue[1] / blueData.length, avgBlue[2] / blueData.length)
-
-    // let avgBlue_r = avgBlue[0] / blueData.length
-    // let avgBlue_g = avgBlue[1] / blueData.length
-    // let avgBlue_b = avgBlue[2] / blueData.length
-
-
-    // d3.select(this).style("font-size","30px");
-    // let avgGrey_r = avgGrey[0] / greyData.length
-    // let avgGrey_g = avgGrey[1] / greyData.length
-    // let avgGrey_b = avgGrey[2] / greyData.length
     if (this.state.loaded) { 
-      // console.log(this.)
-      // this.drawXAxis();
       return (
         <React.Fragment>
             <Nav/>
-            {/* <h3>data distribution by color labels</h3>  */}
-            {/* <XYPlot xType="ordinal" width={window.innerWidth} height={300}>
-              <HorizontalGridLines />
-              <XAxis />
-              <YAxis />
-              <VerticalBarSeries data={[{x:'blue', y:blueData.length}, 
-                                        {x:'green', y:greenData.length},
-                                        {x:'pink', y:pinkData.length},
-                                        {x:'grey', y:greyData.length},
-                                        {x:'red', y:redData.length},
-                                        {x:'purple', y:purpleData.length}, 
-                                        {x:'brown', y:brownData.length}, 
-                                        {x:'orange', y:orangeData.length}, 
-                                        {x:'yellow', y:yellowData.length}]}/>
-            </XYPlot> */}
             <p style={{"text-align":"center"}}>Color labels by Distribution</p>
             <svg width={this.width + this.margin.left + this.margin.right} 
                  height={this.height + this.margin.top + this.margin.bottom}>
@@ -353,17 +267,12 @@ class Visualization extends Component {
                             {x:'orange', y:orangeData.length}, 
                             {x:'yellow', y:yellowData.length}])}
                 <g ref='xaxis' className="x axis" style={{"font": "1.0em"}}
-                   transform={`translate(0, ${this.height})`} onLoad={this.drawXAxis()}>
-                    {this.drawXAxis()}
-                    {/* {d3.axisBottom(this.x).ticks(9)} */}
+                   transform={`translate(0, ${this.height})`}>
                 </g>
                 <g ref='yaxis' className="y axis" style={{"font": "1.0em"}}>
-                    {this.drawYAxis()}
                 </g>
               </g>
             </svg>
-
-            
           <Displaycanvas2 selectedColor = {this.state.selectedColor}/>
         </React.Fragment>
       )
