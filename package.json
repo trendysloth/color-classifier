@@ -9,6 +9,7 @@
     "d3": "^5.9.1",
     "firebase": "^5.8.2",
     "heroku": "^7.21.0",
+    "heroku-node-settings": "^1.1.0",
     "p5": "^0.7.3",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -20,7 +21,7 @@
     "reactstrap": "^7.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start heroku-node-settings server/bin/web.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
