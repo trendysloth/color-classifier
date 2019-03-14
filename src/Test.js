@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Firebase from './Firebase.js';
 import p5 from 'p5';
 import Train from './Train.js';
-import Nav from './Nav.js';
+import Nav2 from './Nav2.js';
 import { Container, Row, Col } from 'reactstrap';
 
 
@@ -112,7 +112,7 @@ class Displaycanvas extends Component {
     
     return (
         <React.Fragment>
-          <Nav/>
+          <Nav2/>
           <Container>
             <Row>
               

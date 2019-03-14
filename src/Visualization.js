@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Firebase from './Firebase.js';
-import Nav from './Nav.js';
+import Nav2 from './Nav2.js';
 import * as d3 from 'd3';
 import Displaycanvas2 from './Displaycanvas2.js';
 
@@ -251,7 +251,7 @@ class Visualization extends Component {
     if (this.state.loaded) { 
       return (
         <React.Fragment>
-            <Nav/>
+            <Nav2/>
             <p style={{"text-align":"center"}}>Color labels by Distribution</p>
             <svg width={this.width + this.margin.left + this.margin.right} 
                  height={this.height + this.margin.top + this.margin.bottom}>
@@ -279,7 +279,7 @@ class Visualization extends Component {
     } else {
       return (
         <React.Fragment>
-          <Nav/>
+          <Nav2/>
           Loading...
         </React.Fragment>
       )

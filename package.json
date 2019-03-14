@@ -9,18 +9,19 @@
     "chroma-js": "^2.0.3",
     "d3": "^5.9.1",
     "firebase": "^5.8.2",
+    "gh-pages": "^2.0.1",
     "heroku": "^7.21.0",
     "heroku-node-settings": "^1.1.0",
     "p5": "^0.7.3",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-p5-wrapper": "0.0.4",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5",
     "react-strap": "0.0.1",
     "react-vis": "^1.11.6",
-    "reactstrap": "^7.1.0",
-    "gh-pages": "^2.0.1"
+    "reactstrap": "^7.1.0"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Firebase from './Firebase.js';
 import p5 from 'p5';
-import Nav from './Nav.js'
 import * as tf from '@tensorflow/tfjs';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './App.css';

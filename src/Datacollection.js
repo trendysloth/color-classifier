@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Canvas from './Sketch.js'; //  with brackets means not default export
 import Newcanvas from './Newcanvas.js';
-import Nav from './Nav.js'
+import Nav2 from './Nav2.js'
 import Displaycanvas from './Displaycanvas.js';
 import { Container, Row, Col } from 'reactstrap';
 import './App.css';
@@ -43,7 +43,7 @@ class Datacollection extends Component {
     // this.generateColor();
     return (
       <div>
-        <Nav/>
+        <Nav2/>
        
         <Container>
           <Row>
