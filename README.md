@@ -1,3 +1,6 @@
+## Introduction
+In this project, I worked on a deep learning infused web application, where I packed data collection / visualization, model training, and model prediction into a one-stop shop in the browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,4 +69,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# trendysloth.github.io
